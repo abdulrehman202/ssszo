@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
+        appBarTheme: AppBarTheme(),
         progressIndicatorTheme: const ProgressIndicatorThemeData(
             color: ColorManager.progress_indicator_color),
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
