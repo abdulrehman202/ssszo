@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ssszo/presentation/controllers/collection_screen_controlle.dart';
 import 'package:ssszo/presentation/managers/asset_manager.dart';
+import 'package:ssszo/presentation/view/item_detail_screen.dart';
 import 'package:ssszo/presentation/widgets/choice_container.dart';
 import 'package:ssszo/presentation/widgets/custom_image_widget.dart';
 import 'package:ssszo/presentation/widgets/custom_widgets.dart';
@@ -43,6 +44,7 @@ class _CollectionScreenState extends State<CollectionScreen> {
   Widget listGridOfCollections() {
     return Expanded(
       child: GridView.count(
+        childAspectRatio: 0.95,
         crossAxisCount: 2,
         children: List.generate(10, (index) => collectionContainer()),
       ),
@@ -50,27 +52,28 @@ class _CollectionScreenState extends State<CollectionScreen> {
   }
 
   Widget collectionContainer() {
-    return Container(
-      margin: const EdgeInsets.all(8.0),
-      padding: const EdgeInsets.only(right: 8.0, left: 8.0, bottom: 8.0),
-      child: Column(
-        children: [
-          Container(
-              decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.all(Radius.circular(5.0)),
-                  border: Border.all(color: const Color(0xffd3d3d3))),
-              height: 100,
-              width: 100,
-              child: customAssetImage(AssetManager.fashionPhotoPath)),
-          const Text('Jacket'),
-          Expanded(
-            child: const Text(
+    return GestureDetector(
+      onTap: () {
+        Get.to(ItemDetailScreen());
+      },
+      child: Container(
+        margin: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.only(right: 8.0, left: 8.0, bottom: 8.0),
+        child: Column(
+          children: [
+            Container(
+                decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(5.0)),
+                    border: Border.all(color: const Color(0xffd3d3d3))),
+                height: 100,
+                width: 100,
+                child: customAssetImage(AssetManager.fashionPhotoPath)),
+            const Text('Jacket'),
+            const Text(
               'Rs 4000',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-          ),
-          const Expanded(
-            child: Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
@@ -82,9 +85,9 @@ class _CollectionScreenState extends State<CollectionScreen> {
                   style: TextStyle(color: Colors.red),
                 ),
               ],
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
