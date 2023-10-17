@@ -21,7 +21,7 @@ class MainCategoryWidget extends StatelessWidget {
               width: 100,
               child: Text(
                 categoryName,
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(fontWeight: FontWeight.bold),
               )),
           const Icon(Icons.arrow_right)
         ],

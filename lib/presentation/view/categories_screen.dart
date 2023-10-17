@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ssszo/presentation/controller/categories_controller.dart';
+import 'package:ssszo/presentation/controllers/categories_controller.dart';
+import 'package:ssszo/presentation/view/collection_screen.dart';
 import 'package:ssszo/presentation/widgets/custom_widgets.dart';
 import 'package:ssszo/presentation/widgets/main_category_widget.dart';
 
@@ -25,9 +26,13 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
       body: ListView.builder(
           itemCount: controller.categoriesList.length,
           itemBuilder: ((context, index) {
-            return MainCategoryWidget(
-                color: controller.colorsList[index],
-                categoryName: controller.categoriesList[index]);
+            return GestureDetector(
+              onTap: () => Get.to(() =>
+                  CollectionScreen(title: controller.categoriesList[index])),
+              child: MainCategoryWidget(
+                  color: controller.colorsList[index],
+                  categoryName: controller.categoriesList[index]),
+            );
           })),
     );
   }
